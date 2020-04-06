@@ -30,6 +30,7 @@ var openedCards = [];
 
 function saveData() {
   console.log("saving data");
+  document.getElementById("submitBtn").disabled = true;
   var formElement = document.querySelector("form");
   //   var request = new XMLHttpRequest();
   //   request.open("POST", "https://elixus-backend.herokuapp.com/customers");
