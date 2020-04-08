@@ -86,18 +86,11 @@
                 <i class="fa fa-cube"></i>
             </li>
         </ul>
-
-        <div id="popup1" class="overlay">
+        <div id="form-popup" class="overlay show">
             <div class="popup">
-                <h2>Congratulations 🎉</h2>
-                <a class="close" href=#>×</a>
+                <h2>Welcome 🎉</h2>
                 <div class="content-1">
-                    Congratulations you're a winner 🎉🎉
-                </div>
-                <div class="content-2">
-                    <p>You made <span id=finalMove> </span> moves </p>
-                    <p>in <span id=totalTime> </span> </p>
-                    <p>Rating: <span id=starRating></span></p>
+                    Please fill in the form to continue
                 </div>
                 <form onsubmit="saveData();return false" method="POST">
                     <label for="fname">Name:</label><br>
@@ -111,7 +104,34 @@
                 </button> -->
             </div>
         </div>
-        <div id="popup2" class="overlay">
+        <div id="popup1" class="overlay">
+            <div class="popup">
+                <h2>Congratulations 🎉</h2>
+                <a class="close" href=#>×</a>
+                <div class="content-1">
+                    Congratulations you're a winner 🎉🎉
+                    <br>
+                    We will send your gifts to your email. Stay tuned ! ! !
+
+                </div>
+                <div class="content-2">
+                    <p>You made <span id=finalMove> </span> moves </p>
+                    <p>in <span id=totalTime> </span> </p>
+                    <p>Rating: <span id=starRating></span></p>
+                </div>
+                <!-- <form onsubmit="saveData();return false" method="POST">
+                    <label for="fname">Name:</label><br>
+                    <input type="text" id="name" name="name" style="width: 200px"><br>
+                    <label for="email">Email:</label><br>
+                    <input type="text" id="email" name="email" style="width: 200px"><br>
+                    <input type="submit" id="submitBtn" style="width: 100px;height:50px" Save>
+                </form> -->
+                <button id="play-again" onclick="playAgain()">
+                    Play again 😄</a>
+                </button>
+            </div>
+        </div>
+        <!-- <div id="popup2" class="overlay">
             <div class="popup">
                 <h2>Congratulations 🎉</h2>
                 <a class="close" href=#>×</a>
@@ -119,7 +139,7 @@
                     We will send your gifts to your email. Stay tuned ! ! !
                 </div>
             </div>
-        </div>
+        </div> -->
 
     </div>
     <script src="js/app.js"></script>

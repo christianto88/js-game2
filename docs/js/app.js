@@ -23,7 +23,7 @@ let closeicon = document.querySelector(".close");
 
 // declare modal
 let modal = document.getElementById("popup1");
-let modal2 = document.getElementById("popup2");
+let form = document.getElementById("form-popup");
 
 // array for opened cards
 var openedCards = [];
@@ -44,8 +44,8 @@ function saveData() {
     if (this.readyState == 4 && this.status == 200) {
       //   document.getElementById("demo").innerHTML = this.responseText;
       console.log("oke");
-      modal.classList.remove("show");
-      modal2.classList.add("show");
+      form.classList.remove("show");
+      // modal.classList.add("show");
     }
   };
   xhttp.open("POST", "https://elixus-backend.herokuapp.com/customers", true);
@@ -248,6 +248,7 @@ function closeModal() {
 // @desciption for user to play Again
 function playAgain() {
   modal.classList.remove("show");
+  form.classList.add("show");
   startGame();
 }
 
