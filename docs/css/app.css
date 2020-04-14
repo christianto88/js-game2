@@ -243,7 +243,7 @@ form {
   text-align: center;
   font-weight: bolder;
   margin-bottom: 1rem;
-  /* font-size: 37px; */
+  font-size: 2em;
 }
 .popup .content-2 {
   max-height: 30%;
@@ -270,6 +270,7 @@ form {
   font-weight: bolder;
   color: black;
   width: 50%;
+  padding: 1em;
 }
 
 /* animations */
