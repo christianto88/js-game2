@@ -371,6 +371,9 @@ header {
   .deck {
     width: 85%;
   }
+  .game-img {
+    height: 2rem;
+  }
   img {
     height: 3rem;
   }
@@ -383,8 +386,11 @@ header {
   .deck {
     width: 95%;
   }
+  .game-img {
+    height: 10rem;
+  }
   img {
-    height: 8rem;
+    height: 2rem;
   }
   .deck .card {
     height: 5.9rem;
