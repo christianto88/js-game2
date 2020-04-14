@@ -229,6 +229,7 @@ form {
   position: relative;
   /* transition: all 5s ease-in-out; */
   /* font-family: "Gloria Hallelujah", cursive; */
+  overflow: auto;
 }
 
 .popup h2 {
