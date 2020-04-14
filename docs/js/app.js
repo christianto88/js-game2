@@ -1,6 +1,7 @@
 // cards array holds all cards
 let card = document.getElementsByClassName("card");
 let cards = [...card];
+let game = document.getElementById("game");
 var data = {};
 // deck of all cards in game
 const deck = document.getElementById("card-deck");
@@ -129,6 +130,7 @@ function startGame() {
   var timer = document.querySelector(".timer");
   timer.innerHTML = "0 mins 0 secs";
   clearInterval(interval);
+  game.classList.add("show");
 }
 
 // @description toggles open and show class to display cards
@@ -250,6 +252,7 @@ function congratulations() {
     finalTime = timer.innerHTML;
 
     // show congratulations modal
+    game.classList.remove("show");
     modal.classList.add("show");
 
     // declare star rating variable

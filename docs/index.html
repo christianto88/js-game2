@@ -15,80 +15,40 @@
 <body>
 
     <div class="container" style="color: white;">
-        <header>
-            <h1>Memory Game</h1>
-        </header>
+        <div id="game" class="overlay">
+            <header>
+                <img class="game-img" src="raw/header2.png">
+            </header>
 
-        <section class="score-panel">
-            <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
+            <section class="score-panel" style="visibility: hidden;">
+                <ul class="stars">
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                </ul>
+
+                <span class="moves" style="color: white;">0</span> Move(s)
+
+                <div class="timer">
+                </div>
+
+                <div class="restart" onclick=startGame()>
+                    <i class="fa fa-repeat"></i>
+                </div>
+            </section>
+
+            <ul class="deck" id="card-deck">
             </ul>
-
-            <span class="moves" style="color: white;">0</span> Move(s)
-
-            <div class="timer">
-            </div>
-
-            <div class="restart" onclick=startGame()>
-                <i class="fa fa-repeat"></i>
-            </div>
-        </section>
-
-        <ul class="deck" id="card-deck">
-            <!-- <li class="card" type="diamond" style="background-color: aqua;">
-                <img src="AB-M&W-Page 3/Layer 1.png" class="hideImage" height="50px">
-            </li>
-            <li class="card" type="plane">
-                <i class="fa fa-paper-plane-o"></i>
-            </li>
-            <li class="card match" type="anchor">
-                <i class="fa fa-anchor"></i>
-            </li>
-            <li class="card" type="bolt">
-                <i class="fa fa-bolt"></i>
-            </li>
-            <li class="card" type="cube">
-                <i class="fa fa-cube"></i>
-            </li>
-            <li class="card match" type="anchor">
-                <i class="fa fa-anchor"></i>
-            </li>
-            <li class="card" type="leaf">
-                <i class="fa fa-leaf"></i>
-            </li>
-            <li class="card" type="bicycle">
-                <i class="fa fa-bicycle"></i>
-            </li>
-            <li class="card" type="diamond">
-                <i class="fa fa-diamond"></i>
-            </li>
-            <li class="card" type="bomb">
-                <i class="fa fa-bomb"></i>
-            </li>
-            <li class="card" type="leaf">
-                <i class="fa fa-leaf"></i>
-            </li>
-            <li class="card" type="bomb">
-                <i class="fa fa-bomb"></i>
-            </li>
-            <li class="card open show" type="bolt">
-                <i class="fa fa-bolt"></i>
-            </li>
-            <li class="card" type="bicycle">
-                <i class="fa fa-bicycle"></i>
-            </li>
-            <li class="card" type="plane">
-                <i class="fa fa-paper-plane-o"></i>
-            </li>
-            <li class="card" type="cube">
-                <i class="fa fa-cube"></i>
-            </li> -->
-        </ul>
+        </div>
         <div id="form-popup" class="overlay show">
             <div class="popup">
                 <!-- <h1>Welcome 🎉</h1> -->
+                <div>
+                    <img class="header-img" src="raw/header.png">
+                </div>
+                <div class="content-1">
+                    Are you ready to test your memory?
+                </div>
                 <div class="content-1">
                     Fill in to START!
                 </div>
@@ -99,15 +59,18 @@
                     <input type="text" id="email" name="email" placeholder="EMAIL"><br>
                     <input type="submit" id="submitBtn" value="PLAY NOW" class="play-now-btn">
                 </form>
-                <!-- <button id="play-again" onclick="playAgain()">
-                    Play again 😄</a>
-                </button> -->
+                <div>
+                    <img class="footer-img" src="raw/footer.png">
+                </div>
             </div>
         </div>
         <div id="popup1" class="overlay">
             <div class="popup">
                 <!-- <h2>Congratulations 🎉</h2>
                 <a class="close" href=#>×</a> -->
+                <header>
+                    <img class="last-header" src="raw/Group 713.png">
+                </header>
                 <div class="content-1">
                     Congratulations
                     <br>
@@ -139,15 +102,6 @@
                 </button>
             </div>
         </div>
-        <!-- <div id="popup2" class="overlay">
-            <div class="popup">
-                <h2>Congratulations 🎉</h2>
-                <a class="close" href=#>×</a>
-                <div class="content-1">
-                    We will send your gifts to your email. Stay tuned ! ! !
-                </div>
-            </div>
-        </div> -->
 
     </div>
     <script src="js/app.js"></script>

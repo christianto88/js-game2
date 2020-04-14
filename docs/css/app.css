@@ -44,7 +44,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-image: url("../raw/bg.png");
 }
 
 .hideImage {
@@ -60,7 +59,10 @@ h1 {
 /*
  * Styles for the deck of cards
  */
-
+#game {
+  text-align: center;
+  overflow: auto;
+}
 .deck {
   padding: 1rem;
   border-radius: 4px;
@@ -69,14 +71,17 @@ h1 {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  margin: 0 0 3em;
+  margin: 0 auto;
+  /* margin: 0 0 3em; */
 }
 
 .deck .card {
   height: 7rem;
   width: 4rem;
   margin: 1rem 1rem;
-  background: #ffff00;
+  /* background: #ffff00; */
+  background-image: url("../raw/card.png");
+  background-size: contain;
   font-size: 0;
   color: #ffffff;
   border-radius: 15px;
@@ -84,7 +89,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  /* box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5); */
 }
 
 .deck .card.open {
@@ -129,7 +134,7 @@ h1 {
  */
 
 .score-panel {
-  text-align: left;
+  /* text-align: left; */
   margin-bottom: 10px;
 }
 
@@ -163,7 +168,7 @@ input {
   border-radius: 29px;
   opacity: 1;
   text-align: center;
-  font-size: 1em;
+  font-size: 1rem;
   margin-top: 1em;
   width: 75%;
   padding: 1em;
@@ -175,6 +180,7 @@ input {
  */
 form {
   text-align: center;
+  width: 100%;
 }
 .play-now-btn {
   background: #fcee21 0% 0% no-repeat padding-box;
@@ -192,6 +198,7 @@ form {
   left: 0;
   right: 0;
   /* background: rgba(0, 0, 0, 0.7); */
+  /* background-image: url("../raw/bg.png"); */
   background-image: url("../raw/bg.png");
 
   transition: opacity 500ms;
@@ -203,12 +210,19 @@ form {
   visibility: visible;
   opacity: 1;
 }
-
+.header-img {
+  height: 14em;
+}
+.footer-img {
+  /* height: 14em; */
+  /* right: 100%; */
+  float: right;
+}
 .popup {
-  margin: 70px auto;
+  margin: 0 auto;
   padding: 20px;
   /* background: #ffffff; */
-  background-image: url("../raw/bg.png");
+  /* background-image: url("../raw/bg.png"); */
   text-align: center;
   border-radius: 5px;
   width: 85%;
@@ -243,7 +257,10 @@ form {
   text-align: center;
   font-weight: bolder;
   margin-bottom: 1rem;
-  font-size: 2em;
+  font-size: 1em;
+}
+.hide {
+  visibility: hidden;
 }
 .popup .content-2 {
   max-height: 30%;
@@ -261,7 +278,9 @@ form {
 #starRating li {
   display: inline-block;
 }
-
+header {
+  height: 10%;
+}
 #play-again {
   background: #fcee21 0% 0% no-repeat padding-box;
   border-radius: 29px;
@@ -355,21 +374,21 @@ form {
     height: 3rem;
   }
   .deck .card {
-    height: 7rem;
+    height: 6rem;
     width: 4rem;
   }
 }
 @media (min-width: 350px) {
   .deck {
-    width: 85%;
+    width: 95%;
   }
   img {
-    height: 3rem;
+    height: 8rem;
   }
   .deck .card {
-    height: 7rem;
+    height: 5.9rem;
     width: 4rem;
-    margin: 0.2rem 0.2rem;
+    margin: 1.2rem 0.2rem;
   }
 }
 
@@ -380,18 +399,30 @@ form {
   .container {
     font-size: 22px;
   }
-
+  .last-header {
+    height: 18rem;
+  }
+  header {
+    width: 100%;
+  }
   .deck {
-    width: 1000px;
+    width: 60%;
     /* height: 1000px; */
+    margin-top: 8em;
   }
   img {
     height: 8rem;
   }
+  .game-img {
+    height: 18rem;
+  }
   .deck .card {
-    height: 321px;
-    width: 206px;
-    margin: 2.2rem 0.3rem;
+    /* height: 321px;
+    width: 206px; */
+    height: 15rem;
+    width: 11rem;
+    margin: 1rem 1rem;
+    /* margin: 2.2rem 0.3rem; */
   }
   .popup {
     width: 60%;
