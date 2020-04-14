@@ -1,7 +1,7 @@
 // cards array holds all cards
 let card = document.getElementsByClassName("card");
 let cards = [...card];
-
+var data = {};
 // deck of all cards in game
 const deck = document.getElementById("card-deck");
 
@@ -73,12 +73,36 @@ function shuffle(array) {
 }
 
 // @description shuffles cards when page is refreshed / loads
-document.body.onload = startGame();
+document.body.onload = function () {
+  for (let i = 0; i < 16; i++) {
+    let node = document.createElement("li");
+    node.classList.add("card");
+    node.setAttribute("type", `${Math.floor(i / 2) + 1}.png`);
+    let img = document.createElement("img");
+    img.src = `raw/${Math.floor(i / 2) + 1}.png`;
+    // img.style.height = "10rem";
+    img.classList.add("hideImage");
+    node.appendChild(img);
+    deck.appendChild(node);
+  }
+  card = document.getElementsByClassName("card");
+  cards = [...card];
+
+  // loop to add event listeners to each card
+  for (var i = 0; i < cards.length; i++) {
+    card = cards[i];
+    card.addEventListener("click", displayCard);
+    card.addEventListener("click", cardOpen);
+    card.addEventListener("click", congratulations);
+  }
+  startGame();
+};
 
 // @description function to start a new play
 function startGame() {
   // empty the openCards array
   openedCards = [];
+  console.log("cards shuffle", cards.length);
 
   // shuffle deck
   cards = shuffle(cards);
@@ -109,9 +133,11 @@ function startGame() {
 
 // @description toggles open and show class to display cards
 var displayCard = function () {
+  console.log("t", this.childNodes);
   this.classList.toggle("open");
   this.classList.toggle("show");
   this.classList.toggle("disabled");
+  this.childNodes[0].classList.remove("hideImage");
 };
 
 // @description add opened cards to OpenedCards list and check if cards are match or not
@@ -145,6 +171,8 @@ function unmatched() {
   setTimeout(function () {
     openedCards[0].classList.remove("show", "open", "no-event", "unmatched");
     openedCards[1].classList.remove("show", "open", "no-event", "unmatched");
+    openedCards[0].childNodes[0].classList.add("hideImage");
+    openedCards[1].childNodes[0].classList.add("hideImage");
     enable();
     openedCards = [];
   }, 1100);
@@ -250,12 +278,4 @@ function playAgain() {
   modal.classList.remove("show");
   form.classList.add("show");
   startGame();
-}
-
-// loop to add event listeners to each card
-for (var i = 0; i < cards.length; i++) {
-  card = cards[i];
-  card.addEventListener("click", displayCard);
-  card.addEventListener("click", cardOpen);
-  card.addEventListener("click", congratulations);
 }

@@ -6,7 +6,7 @@
     <title>Memory Game</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"> -->
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker">
     <link rel="stylesheet" href="css/app.css">
@@ -14,7 +14,7 @@
 
 <body>
 
-    <div class="container">
+    <div class="container" style="color: white;">
         <header>
             <h1>Memory Game</h1>
         </header>
@@ -26,7 +26,7 @@
                 <li><i class="fa fa-star"></i></li>
             </ul>
 
-            <span class="moves">0</span> Move(s)
+            <span class="moves" style="color: white;">0</span> Move(s)
 
             <div class="timer">
             </div>
@@ -37,8 +37,8 @@
         </section>
 
         <ul class="deck" id="card-deck">
-            <li class="card" type="diamond">
-                <i class="fa fa-diamond"></i>
+            <!-- <li class="card" type="diamond" style="background-color: aqua;">
+                <img src="AB-M&W-Page 3/Layer 1.png" class="hideImage" height="50px">
             </li>
             <li class="card" type="plane">
                 <i class="fa fa-paper-plane-o"></i>
@@ -84,20 +84,20 @@
             </li>
             <li class="card" type="cube">
                 <i class="fa fa-cube"></i>
-            </li>
+            </li> -->
         </ul>
         <div id="form-popup" class="overlay show">
             <div class="popup">
-                <h2>Welcome 🎉</h2>
+                <h1>Welcome 🎉</h1>
                 <div class="content-1">
                     Please fill in the form to continue
                 </div>
                 <form onsubmit="saveData();return false" method="POST">
                     <label for="fname">Name:</label><br>
-                    <input type="text" id="name" name="name" style="width: 200px"><br>
+                    <input type="text" id="name" name="name" placeholder="NAME"><br>
                     <label for="email">Email:</label><br>
-                    <input type="text" id="email" name="email" style="width: 200px"><br>
-                    <input type="submit" id="submitBtn" style="width: 100px;height:50px" Save>
+                    <input type="text" id="email" name="email" placeholder="EMAIL"><br>
+                    <input type="submit" id="submitBtn" value="PLAY" class="play-btn">
                 </form>
                 <!-- <button id="play-again" onclick="playAgain()">
                     Play again 😄</a>
