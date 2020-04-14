@@ -256,7 +256,7 @@ function congratulations() {
     var starRating = document.querySelector(".stars").innerHTML;
 
     //showing move, rating, time on modal
-    document.getElementById("finalMove").innerHTML = moves;
+    document.getElementById("finalMove").innerHTML = moves + " moves";
     document.getElementById("starRating").innerHTML = starRating;
     document.getElementById("totalTime").innerHTML = finalTime;
 

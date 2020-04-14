@@ -20,10 +20,25 @@ img {
 }
 body {
   background: #ffffff;
-  font-family: "Permanent Marker", cursive;
-  font-size: 16px;
+  font-family: OpenSans-Bold;
+  font-weight: bold;
+  /* font-size: 16px; */
+}
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
 }
 
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: white;
+}
 .container {
   display: flex;
   justify-content: center;
@@ -144,15 +159,14 @@ h1 {
   margin: 0 1rem;
 }
 input {
-  top: 1435px;
-  left: 406px;
-  width: 634px;
-  height: 87px;
   border: 3px solid #fcee21;
   border-radius: 29px;
   opacity: 1;
   text-align: center;
-  font-size: 37px;
+  font-size: 1em;
+  margin-top: 1em;
+  width: 75%;
+  padding: 1em;
   background-color: transparent;
   color: white;
 }
@@ -162,17 +176,14 @@ input {
 form {
   text-align: center;
 }
-.play-btn {
-  margin-top: 20px;
-  top: 1737px;
-  left: 541px;
-  width: 365px;
-  height: 87px;
+.play-now-btn {
   background: #fcee21 0% 0% no-repeat padding-box;
   border-radius: 29px;
   opacity: 1;
-  font-size: 37px;
+  font-size: 1em;
+  font-weight: bolder;
   color: black;
+  width: 50%;
 }
 .overlay {
   position: fixed;
@@ -198,12 +209,12 @@ form {
   padding: 20px;
   /* background: #ffffff; */
   background-image: url("../raw/bg.png");
-
+  text-align: center;
   border-radius: 5px;
   width: 85%;
   position: relative;
-  transition: all 5s ease-in-out;
-  font-family: "Gloria Hallelujah", cursive;
+  /* transition: all 5s ease-in-out; */
+  /* font-family: "Gloria Hallelujah", cursive; */
 }
 
 .popup h2 {
@@ -226,12 +237,20 @@ form {
 .popup .close:hover {
   color: #e5f720;
 }
-
-.popup .content-1,
-.content-2 {
+.popup .content-1 {
   max-height: 30%;
   overflow: auto;
   text-align: center;
+  font-weight: bolder;
+  margin-bottom: 1rem;
+  /* font-size: 37px; */
+}
+.popup .content-2 {
+  max-height: 30%;
+  overflow: auto;
+  text-align: center;
+  font-weight: bolder;
+  /* font-size: 37px; */
 }
 
 .show {
@@ -244,15 +263,13 @@ form {
 }
 
 #play-again {
-  background-color: #141214;
-  padding: 0.7rem 1rem;
-  font-size: 1.1rem;
-  display: block;
-  margin: 0 auto;
+  background: #fcee21 0% 0% no-repeat padding-box;
+  border-radius: 29px;
+  opacity: 1;
+  font-size: 1em;
+  font-weight: bolder;
+  color: black;
   width: 50%;
-  font-family: "Gloria Hallelujah", cursive;
-  color: #ffffff;
-  border-radius: 5px;
 }
 
 /* animations */
@@ -375,7 +392,6 @@ form {
     width: 206px;
     margin: 2.2rem 0.3rem;
   }
-
   .popup {
     width: 60%;
   }
