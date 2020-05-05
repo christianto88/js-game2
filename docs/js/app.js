@@ -25,35 +25,28 @@ let closeicon = document.querySelector(".close");
 // declare modal
 let modal = document.getElementById("popup1");
 let form = document.getElementById("form-popup");
-
+let leaderboard = document.getElementById("leaderboard")
 // array for opened cards
 var openedCards = [];
+var user = {}
 
 function saveData() {
-  console.log("saving data");
   document.getElementById("submitBtn").disabled = true;
-  var formElement = document.querySelector("form");
-  //   var request = new XMLHttpRequest();
-  //   request.open("POST", "https://elixus-backend.herokuapp.com/customers");
-  //   request.send(new FormData(formElement));
-  //   fetch("https://elixus-backend.herokuapp.com/customers", {
-  //     method: "POST",
-  //     body: new FormData(formElement),
-  //   });
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      //   document.getElementById("demo").innerHTML = this.responseText;
-      console.log("oke");
-      form.classList.remove("show");
-      // modal.classList.add("show");
-    }
-  };
-  xhttp.open("POST", "https://elixus-backend.herokuapp.com/customers", true);
-  //   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send(new FormData(formElement));
-}
+  var formElement = document.querySelector("form").elements;
+  user.name = formElement[0].value
+  user.email = formElement[1].value
+  form.classList.remove("show");
 
+}
+function saveScore(score) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "https://fb-api.ematicsolutions.com/elixus/customers", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.send(JSON.stringify({
+    email: user.email,
+    score, name
+  }));
+}
 // @description shuffles cards
 // @param {array}
 // @returns shuffledarray
@@ -135,7 +128,6 @@ function startGame() {
 
 // @description toggles open and show class to display cards
 var displayCard = function () {
-  console.log("t", this.childNodes);
   this.classList.toggle("open");
   this.classList.toggle("show");
   this.classList.toggle("disabled");
@@ -260,21 +252,44 @@ function congratulations() {
 
     //showing move, rating, time on modal
     document.getElementById("finalMove").innerHTML = moves + " moves";
-    document.getElementById("starRating").innerHTML = starRating;
+    document.getElementById("score").innerHTML = moves * ((hour * 3600) + (minute * 60) + second);
     document.getElementById("totalTime").innerHTML = finalTime;
+    saveScore(moves * ((hour * 3600) + (minute * 60) + second))
 
     //closeicon on modal
-    closeModal();
+    // closeModal();
   }
 }
+function showLeaderBoard() {
+  modal.classList.remove("show");
+  leaderboard.classList.add("show")
+  console.log('fetch board data')
+  var xhttp = new XMLHttpRequest();
+  let leaderboardList = document.getElementById("leaderboard-list")
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      let data = JSON.parse(this.response)
+      data = data.sort((a, b) => { return a.score - b.score })
+      for (let i = 0; i < data.length; i++) {
+        let node = document.createElement("li");
+        node.classList.add('leaderboard-score')
 
-// @description close icon on modal
-function closeModal() {
-  closeicon.addEventListener("click", function (e) {
-    modal.classList.remove("show");
-    startGame();
-  });
+        // node.appendChild(img);
+        node.innerHTML = `<span> ${i + 1}. ${data[i].email} - ${data[i].score}</span>`
+        leaderboardList.appendChild(node);
+      }
+    }
+  };
+  xhttp.open("GET", "https://fb-api.ematicsolutions.com/elixus/customers", true);
+  xhttp.send();
 }
+// @description close icon on modal
+// function closeModal() {
+//   closeicon.addEventListener("click", function (e) {
+//     modal.classList.remove("show");
+//     startGame();
+//   });
+// }
 
 // @desciption for user to play Again
 function playAgain() {

@@ -182,6 +182,13 @@ form {
   text-align: center;
   width: 100%;
 }
+.leaderboard-score{
+  list-style: none;
+  padding: 2px;
+  border: 2px solid;
+  width: 50%;
+  margin-bottom: 10px;
+}
 .play-now-btn {
   background: #fcee21 0% 0% no-repeat padding-box;
   border-radius: 29px;
@@ -204,6 +211,7 @@ form {
   transition: opacity 500ms;
   visibility: hidden;
   opacity: 0;
+  overflow: auto;
 }
 
 .overlay:target {

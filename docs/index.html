@@ -40,6 +40,13 @@
             <ul class="deck" id="card-deck">
             </ul>
         </div>
+        <div id="leaderboard" class="overlay">
+            <div class="content-1">
+                LeaderBoard
+            </div>
+            <ul class="" id="leaderboard-list">
+            </ul>
+        </div>
         <div id="form-popup" class="overlay show">
             <div class="popup">
                 <!-- <h1>Welcome 🎉</h1> -->
@@ -80,7 +87,7 @@
                 <div class="content-2">
                     <p>You made <span id="finalMove" style="color: yellow;"> </span> moves </p>
                     <p style="color: yellow;">in <span id=totalTime> </span> </p>
-                    <p>Rating: <span id=starRating></span></p>
+                    <p>Score: <span id=score></span></p>
                 </div>
                 <div class="content-2">
                     <p>Screenshot your games on Facebook with</p>
@@ -90,15 +97,11 @@
                 <div class="content-2">
                     <p>Invite 5 friends to play and 20 lucky winners will win RM100 Ayam Brand goodies</p>
                 </div>
-                <!-- <form onsubmit="saveData();return false" method="POST">
-                    <label for="fname">Name:</label><br>
-                    <input type="text" id="name" name="name" style="width: 200px"><br>
-                    <label for="email">Email:</label><br>
-                    <input type="text" id="email" name="email" style="width: 200px"><br>
-                    <input type="submit" id="submitBtn" style="width: 100px;height:50px" Save>
-                </form> -->
                 <button id="play-again" onclick="playAgain()">
                     PLAY AGAIN
+                </button><br>
+                <button id="play-again" onclick="showLeaderBoard()">
+                    LEADERBOARD
                 </button>
             </div>
         </div>
