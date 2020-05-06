@@ -29,22 +29,25 @@ let leaderboard = document.getElementById("leaderboard")
 // array for opened cards
 var openedCards = [];
 var user = {}
-
+let goBackBtn = document.getElementById("go-back-button")
 function saveData() {
   document.getElementById("submitBtn").disabled = true;
   var formElement = document.querySelector("form").elements;
   user.name = formElement[0].value
   user.email = formElement[1].value
   form.classList.remove("show");
-
+  startGame()
 }
 function saveScore(score) {
+  console.log('saveScore', user)
+  user.score = score
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "https://fb-api.ematicsolutions.com/elixus/customers", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.send(JSON.stringify({
     email: user.email,
-    score, name
+    score,
+    name: user.name
   }));
 }
 // @description shuffles cards
@@ -89,14 +92,14 @@ document.body.onload = function () {
     card.addEventListener("click", cardOpen);
     card.addEventListener("click", congratulations);
   }
-  startGame();
+  // startGame();
 };
 
 // @description function to start a new play
 function startGame() {
   // empty the openCards array
   openedCards = [];
-  console.log("cards shuffle", cards.length);
+  console.log("start game");
 
   // shuffle deck
   cards = shuffle(cards);
@@ -124,6 +127,11 @@ function startGame() {
   timer.innerHTML = "0 mins 0 secs";
   clearInterval(interval);
   game.classList.add("show");
+  // matchedCard = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8]
+  // user = { email: 'kris', score: 100 }
+  // moves = 1000
+  // congratulations()
+
 }
 
 // @description toggles open and show class to display cards
@@ -239,6 +247,7 @@ function startTimer() {
 
 // @description congratulations when all cards match, show modal and moves, time and rating
 function congratulations() {
+  console.log('congrats', matchedCard.length)
   if (matchedCard.length == 16) {
     clearInterval(interval);
     finalTime = timer.innerHTML;
@@ -261,27 +270,56 @@ function congratulations() {
   }
 }
 function showLeaderBoard() {
+  let userSelected = false
   modal.classList.remove("show");
+  form.classList.remove('show')
   leaderboard.classList.add("show")
-  console.log('fetch board data')
+  console.log('showLeaderBoard', user)
+  if (user.score) {
+    goBackBtn.style.visibility = "true"
+    goBackBtn.addEventListener('click', function (e) {
+      modal.classList.add('show')
+      leaderboard.classList.remove('show')
+    })
+  } else {
+    goBackBtn.style.visibility = "hidden"
+  }
   var xhttp = new XMLHttpRequest();
   let leaderboardList = document.getElementById("leaderboard-list")
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      let data = JSON.parse(this.response)
-      data = data.sort((a, b) => { return a.score - b.score })
-      for (let i = 0; i < data.length; i++) {
-        let node = document.createElement("li");
-        node.classList.add('leaderboard-score')
+  if (leaderboardList.childElementCount == 0) {
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        let data = JSON.parse(this.response)
+        data = data.sort((a, b) => { return a.score - b.score })
+        let previewData = data.slice(0, 5)
+        for (let i = 0; i < previewData.length; i++) {
+          let node = document.createElement("li");
+          node.classList.add('leaderboard-score')
+          node.innerHTML = `<span> ${i + 1}. ${previewData[i].email} - ${previewData[i].score}</span>`
+          if (previewData[i].email === user.email) {
+            userSelected = true
+            node.style.backgroundColor = 'crimson'
+          }
+          leaderboardList.appendChild(node);
+        }
+        console.log('11', userSelected)
+        if (user.score && userSelected === false) {
+          let index = data.findIndex(el => el.email === user.email)
+          console.log('data', data)
+          console.log('index', index)
+          let node = document.createElement("li");
+          node.classList.add('leaderboard-score')
+          node.innerHTML = `<span> ${index + 1}. ${data[index].email} - ${data[index].score}</span>`
+          node.style.backgroundColor = 'crimson'
+          leaderboardList.appendChild(node);
 
-        // node.appendChild(img);
-        node.innerHTML = `<span> ${i + 1}. ${data[i].email} - ${data[i].score}</span>`
-        leaderboardList.appendChild(node);
+        }
       }
-    }
-  };
-  xhttp.open("GET", "https://fb-api.ematicsolutions.com/elixus/customers", true);
-  xhttp.send();
+    };
+    xhttp.open("GET", "https://fb-api.ematicsolutions.com/elixus/customers", true);
+    xhttp.send();
+  }
+
 }
 // @description close icon on modal
 // function closeModal() {

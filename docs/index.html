@@ -44,8 +44,10 @@
             <div class="content-1">
                 LeaderBoard
             </div>
-            <ul class="" id="leaderboard-list">
+            <ul id="leaderboard-list">
             </ul>
+            <button id="go-back-button">Go Back</button>
+            <button onclick="(function(){window.location.reload()})()">Start new Game</button>
         </div>
         <div id="form-popup" class="overlay show">
             <div class="popup">
@@ -56,6 +58,7 @@
                 <div class="content-1">
                     Are you ready to test your memory?
                 </div>
+
                 <div class="content-1">
                     Fill in to START!
                 </div>
@@ -66,6 +69,9 @@
                     <input type="text" id="email" name="email" placeholder="EMAIL"><br>
                     <input type="submit" id="submitBtn" value="PLAY NOW" class="play-now-btn">
                 </form>
+                <button style="padding:10px;margin-top: 10px;" onclick="showLeaderBoard()">
+                    LEADERBOARD
+                </button>
                 <div>
                     <img class="footer-img" src="raw/footer.png">
                 </div>
